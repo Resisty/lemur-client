@@ -1,0 +1,97 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "ooPbKma6nLiHd1bCAYXeMznqImI=",
+			"path": "github.com/DataDog/datadog-go/statsd",
+			"revision": "0ddda6bee21174ef6c4873647cb0d6ec9cba996f",
+			"revisionTime": "2017-04-27T16:57:18Z"
+		},
+		{
+			"checksumSHA1": "zt4DAP21X8JQSpkTm0DtoWWWVB0=",
+			"path": "github.com/beevik/etree",
+			"revision": "cda1c0026246bd095961ef9a3c430e50d0e80fba",
+			"revisionTime": "2017-04-17T06:42:48Z"
+		},
+		{
+			"checksumSHA1": "FwjxyOGlOWp5TqkqLSYfrdxC1E4=",
+			"path": "github.com/dgrijalva/jwt-go",
+			"revision": "6c8dedd55f8a2e41f605de6d5d66e51ed1f299fc",
+			"revisionTime": "2017-05-08T16:54:58Z"
+		},
+		{
+			"checksumSHA1": "g/V4qrXjUGG9B+e3hB+4NAYJ5Gs=",
+			"path": "github.com/gorilla/context",
+			"revision": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42",
+			"revisionTime": "2016-08-17T18:46:32Z"
+		},
+		{
+			"checksumSHA1": "zmCk+lgIeiOf0Ng9aFP9aFy8ksE=",
+			"path": "github.com/gorilla/mux",
+			"revision": "4c1c3952b7d9d0a061a3fa7b36fd373ba0398ebc",
+			"revisionTime": "2017-04-27T04:12:50Z"
+		},
+		{
+			"checksumSHA1": "SGc5vSs9tXhrGJ5ncymDyMvTg24=",
+			"path": "github.com/jonboulle/clockwork",
+			"revision": "bcac9884e7502bb2b474c0339d889cb981a2f27f",
+			"revisionTime": "2016-09-07T12:20:59Z"
+		},
+		{
+			"checksumSHA1": "2WJe3GLGy3snNMqJNtti2GY32cg=",
+			"path": "github.com/russellhaering/gosaml2",
+			"revision": "6074095354a9bead88f041558b2150ce47676371",
+			"revisionTime": "2017-04-06T05:22:20Z"
+		},
+		{
+			"checksumSHA1": "5R3UDn9Dycuu9FLnBtPM3zuw3zc=",
+			"path": "github.com/russellhaering/gosaml2/types",
+			"revision": "6074095354a9bead88f041558b2150ce47676371",
+			"revisionTime": "2017-04-06T05:22:20Z"
+		},
+		{
+			"checksumSHA1": "8/qAqsEbrgY4N/eWJwpquPHjOjw=",
+			"path": "github.com/russellhaering/goxmldsig",
+			"revision": "eaac44c63fe007124f8f6255b09febc906784981",
+			"revisionTime": "2017-03-24T12:29:54Z"
+		},
+		{
+			"checksumSHA1": "p8URJMxNQPXJ7RaiZF/CqlwNMzw=",
+			"path": "github.com/russellhaering/goxmldsig/etreeutils",
+			"revision": "eaac44c63fe007124f8f6255b09febc906784981",
+			"revisionTime": "2017-03-24T12:29:54Z"
+		},
+		{
+			"checksumSHA1": "Q4UydcJq+umxYmfYCUJKT+emIKg=",
+			"path": "github.com/russellhaering/goxmldsig/types",
+			"revision": "eaac44c63fe007124f8f6255b09febc906784981",
+			"revisionTime": "2017-03-24T12:29:54Z"
+		},
+		{
+			"checksumSHA1": "zmC8/3V4ls53DJlNTKDZwPSC/dA=",
+			"path": "github.com/satori/go.uuid",
+			"revision": "5bf94b69c6b68ee1b541973bb8e1144db23a194b",
+			"revisionTime": "2017-03-21T23:07:31Z"
+		},
+		{
+			"checksumSHA1": "CJAtiWwracZWLccrLxUnHUcKIrc=",
+			"path": "github.com/sirupsen/logrus",
+			"revision": "68cec9f21fbf3ea8d8f98c044bc6ce05f17b267a",
+			"revisionTime": "2017-06-06T20:59:45Z"
+		},
+		{
+			"checksumSHA1": "fSpQ1X/1tpkN80Ceba8KseGeVu8=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "b9e8d468b01f806830d387bd9a1fe96dc68129d1",
+			"revisionTime": "2017-06-07T10:07:34Z"
+		},
+		{
+			"checksumSHA1": "fALlQNY1fM99NesfLJ50KguWsio=",
+			"path": "gopkg.in/yaml.v2",
+			"revision": "cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b",
+			"revisionTime": "2017-04-07T17:21:22Z"
+		}
+	],
+	"rootPath": "lemur"
+}

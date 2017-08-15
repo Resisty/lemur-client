@@ -1,0 +1,81 @@
+# simple defaults
+- defaults:
+    name: lemur_client_image_build
+    project-type: freestyle
+    node: docker
+    logrotate:
+      daysToKeep: 30
+    wrappers:
+      - timeout:
+          timeout: 150
+          timeout-var: BUILD_TIMEOUT
+          type: absolute
+      - timestamps
+- scm:
+    name: premerge
+    scm:
+      - git:
+          url: ssh://git@gitrepo.example.com/lemur.git
+          credentials-id: aa954545-ff1d-4b63-9e67-50f5cde65fba
+          branches:
+            - '**/feature/*'
+            - '**/hotfix/*'
+- scm:
+    name: develop
+    scm:
+      - git:
+          url: ssh://git@gitrepo.example.com/lemur.git
+          credentials-id: aa954545-ff1d-4b63-9e67-50f5cde65fba
+          branches:
+            - 'develop'
+
+# notify stash
+- publisher:
+    name: stash-notifier
+    publishers:
+      - conditional-publisher:
+          - condition-kind: always
+            action:
+              - stash:
+                  url: https://gitrepo.example.com
+                  password: ''
+                  credentials-id: '9b02c718-b873-4d8c-a27b-801de5e4d0af'
+
+- job:
+    name: lemur_client_premerge
+    node: docker
+    defaults: lemur_client_image_build
+    concurrent: true
+    properties:
+      - throttle:
+          max-total: '0'
+          max-per-node: '1'
+    scm:
+      - premerge
+    triggers:
+      - pollscm:
+          cron: '@yearly'
+    builders:
+      - shell: /usr/bin/env bash tools/ci/premerge
+    publishers:
+      - stash-notifier
+
+- job:
+    name: lemur_client_image_build
+    node: docker
+    defaults: lemur_client_image_build
+    scm:
+      - develop
+    triggers:
+      - pollscm:
+          cron: '@yearly'
+    properties:
+      - delivery-pipeline:
+          stage: 'prod'
+          task: 'deploy'
+    builders:
+      - shell: |
+          /usr/bin/env bash build_docker push
+    publishers:
+      - stash-notifier
+

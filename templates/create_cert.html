@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lemur Certificate Requests</title>
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/2.9.0/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3.3.2/css/bootstrap.css" />
+    <style>
+      body {margin: 0; padding: 0;}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>Request Certificates</h1>
+      </div>
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">Create Certificate</h3>
+        </div>
+        <div class="panel-body">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-certificate"></span>
+              Authority
+            </span>
+            <input id="authority" type="text" class="form-control" placeholder="ProdInfra" ></input>
+
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-tags"></span>
+              Common Name
+            </span>
+            <input id="commonName" type="text" class="form-control" placeholder="first.last" ></input>
+
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-user"></span>
+              Owner
+            </span>
+            <input id="owner" type="text" class="form-control" placeholder="first.last@example.com" ></input>
+
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+              Start Date
+            </span>
+            <input id="validityStart" type="text" class="form-control" placeholder="2017-01-01" ></input>
+
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+              End Date
+            </span>
+            <input id="validityEnd" type="text" class="form-control" placeholder="2018-01-01" ></input>
+
+            <span class="input-group-btn">
+              <button id='submit' class="btn btn-default glyphicon glyphicon-ok" type="button">
+              Submit
+              </button>
+            </span>
+        </div>
+      </div>
+      <div id='certificate-data' style='overflow-x: scroll'></div>
+      <script type="text/javascript" src="/js/certificate_request.js"></script>
+    </div>
+  </body>
+</html>

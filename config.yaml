@@ -1,0 +1,9 @@
+idp_metadata: https://mydevaccount.oktapreview.com/app/xxxxxx/sso/saml/metadata
+idp_issuer: http://www.okta.com/xxxxxx
+idp_api_auth_url: https://mydevaccount.oktapreview.com/api/v1/authn
+saml_callback: https://lemurclient.example.com/v1/_saml_callback
+audience_uri: lemur-client
+cert_authority: CertificateAuthority
+common_name: lemurclient.example.com
+email_address: myaddress@example.com
+certificate_org: SERVER_SSL_ORG

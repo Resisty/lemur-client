@@ -1,0 +1,8 @@
+bin/
+*.log
+pkg/
+src/github.com/
+.cache/
+ca-certificates.crt
+*.crt
+*.key

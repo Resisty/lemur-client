@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+set -e
+
+declare -r current_dir=$(cd "$(dirname "$0")"; pwd)
+declare -r image_name="lemur_client"
+
+PREFIX=container.repo.example.com/${image_name}
+TAG="${2:-v1}"
+GOOS="linux"
+
+run_tests() {
+    build_image
+    echo "##### RUNNING TESTS #####"
+    docker run --rm -v "$PWD":/lemur -w /lemur/src/lemur -e GOPATH=/lemur golang:1.7 go test
+    echo "####### RAN TESTS #######"
+    retval=$?
+    docker rmi -f golang:1.7
+    cleanup
+}
+
+build_image() {
+  # Per-line:
+  # mount our repo
+  # working directory should be in our source
+  # make sure GOPATH refers to top-level of repo
+  # build/run on scratch
+  # disable CGO for a static binary
+  # -a rebuilds our vendored dependencies
+  # keep output separate from default builds
+  # put binary in top-level bin/
+  docker run --rm \
+	  -v "$PWD":/lemur \
+	  -w /lemur/src/lemur \
+	  -e GOPATH=/lemur \
+	  -e GOOS=${GOOS} \
+	  -e CGO_ENABLED=0 \
+	  -u $(id -u):$(id -g) \
+	  golang:1.7 go build -a \
+	  -installsuffix cgo \
+	  -v -o ../../bin/lemur-client \
+
+  # Grab a fresh copy of default root certs
+  docker run -i centos:7 \
+	  /bin/sh -c \
+	  'cat /etc/ssl/certs/ca-bundle.crt' > ca-certificates.crt
+  docker build -t ${PREFIX}:${TAG} ${current_dir}
+}
+
+push_to_registry() {
+  docker push ${PREFIX}:${TAG}
+}
+
+cleanup() {
+  docker rmi -f ${PREFIX}:${TAG}
+}
+
+case $1 in 
+  tests)
+    run_tests
+    exit $retval
+    ;;
+  push)
+    build_image
+    push_to_registry
+    cleanup
+    ;;
+  develop)
+    GOOS="darwin"
+    run_tests
+    exit $retval
+    ;;
+  *)
+    echo "Nothing to do right now"
+    ;;
+esac
+
+exit 0
